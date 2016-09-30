@@ -169,8 +169,12 @@ public class MainActivity extends AppCompatActivity {
                     inputStream = urlConnection.getInputStream();
                     jsonResponse = readFromStream(inputStream);
                 }
+                else {
+                    Log.d(LOG_TAG, "HTTP Response error: " + urlConnection.getResponseCode());
+                }
             } catch (IOException e) {
                 // TODO: Handle the exception
+                Log.d(LOG_TAG, "Caught IOException in method makeHttpRequest()");
             } finally {
                 if (urlConnection != null) {
                     urlConnection.disconnect();
